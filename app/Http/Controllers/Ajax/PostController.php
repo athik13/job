@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Http\Controllers\Ajax;
 
@@ -34,7 +22,7 @@ class PostController extends FrontController
     {
         parent::__construct();
     }
-    
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -42,7 +30,7 @@ class PostController extends FrontController
     public function savePost(Request $request)
     {
         $postId = $request->input('postId');
-        
+
         $status = 0;
         if (auth()->check()) {
             $savedPost = SavedPost::where('user_id', auth()->user()->id)->where('post_id', $postId);
@@ -60,17 +48,17 @@ class PostController extends FrontController
                 $status = 1;
             }
         }
-        
+
         $result = [
             'logged'   => (auth()->check()) ? auth()->user()->id : 0,
             'postId'   => $postId,
             'status'   => $status,
             'loginUrl' => UrlGen::login(),
         ];
-        
+
         return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE);
     }
-    
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -86,7 +74,7 @@ class PostController extends FrontController
         if ($keyword == '') {
             return response()->json([], 200, [], JSON_UNESCAPED_UNICODE);
         }
-        
+
         $status = 0;
         if (auth()->check()) {
             $savedSearch = SavedSearch::where('user_id', auth()->user()->id)->where('keyword', $keyword)->where('query', $query);
@@ -107,17 +95,17 @@ class PostController extends FrontController
                 $status = 1;
             }
         }
-        
+
         $result = [
             'logged'   => (auth()->check()) ? auth()->user()->id : 0,
             'query'    => $query,
             'status'   => $status,
             'loginUrl' => UrlGen::login(),
         ];
-        
+
         return response()->json($result, 200, [], JSON_UNESCAPED_UNICODE);
     }
-    
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -125,29 +113,29 @@ class PostController extends FrontController
     public function getPhone(Request $request)
     {
         $postId = $request->input('postId', 0);
-        
+
         $post = Post::withoutGlobalScopes([VerifiedScope::class, ReviewedScope::class])->where('id', $postId)->first(['phone']);
-        
+
         if (empty($post)) {
             return response()->json(['error' => ['message' => t("Error. Post doesn't exist.")], 404]);
         }
-	
-		$phone = $post->phone;
-		$phoneLink = 'tel:' . $post->phone;
-	
-		if (config('settings.single.convert_phone_number_to_img')) {
-			try {
-				$phone = TextToImage::make($post->phone, config('larapen.core.textToImage'));
-			} catch (\Exception $e) {
-				$phone = $post->phone;
-			}
-		}
-	
-		$data = [
-			'phone' => $phone,
-			'link'  => $phoneLink,
-		];
-        
+
+        $phone = $post->phone;
+        $phoneLink = 'tel:' . $post->phone;
+
+        if (config('settings.single.convert_phone_number_to_img')) {
+            try {
+                $phone = TextToImage::make($post->phone, config('larapen.core.textToImage'));
+            } catch (\Exception $e) {
+                $phone = $post->phone;
+            }
+        }
+
+        $data = [
+            'phone' => $phone,
+            'link'  => $phoneLink,
+        ];
+
         return response()->json($data, 200, [], JSON_UNESCAPED_UNICODE);
     }
 }

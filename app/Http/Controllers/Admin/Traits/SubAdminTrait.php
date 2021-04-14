@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Http\Controllers\Admin\Traits;
 
@@ -33,14 +21,14 @@ trait SubAdminTrait
         $startAt = 0;
         $customPrefix = config('larapen.core.locationCodePrefix', 'Z');
         $zeroLead = 3;
-        
+
         // Get the latest Entry
         $latestAddedEntry = $this->xPanel->model->withoutGlobalScope(ActiveScope::class)
             ->where('country_code', $this->countryCode)
             ->where('code', 'LIKE', $prefix . $customPrefix . '%')
             ->orderBy('code', 'DESC')
             ->first();
-        
+
         if (!empty($latestAddedEntry)) {
             $codeTab = explode($prefix, $latestAddedEntry->code);
             $latestAddedId = (isset($codeTab[1])) ? $codeTab[1] : null;
@@ -56,13 +44,13 @@ trait SubAdminTrait
         } else {
             $newId = $customPrefix . zeroLead($startAt + 1, $zeroLead);
         }
-        
+
         // Full new ID
         $newId = $prefix . $newId;
-        
+
         return $newId;
     }
-    
+
     /**
      * Increment existing alphanumeric value by Transforming the given value
      * e.g. AB => ZZ001 => ZZ002 => ZZ003 ...
@@ -78,18 +66,17 @@ trait SubAdminTrait
         if (!empty($value)) {
             // Numeric value
             if (is_numeric($value)) {
-                
+
                 $value = $customPrefix . zeroLead($value + 1);
-                
             } // NOT numeric value
             else {
-                
+
                 // Value contains the Custom Prefix
                 if (Str::startsWith($value, $customPrefix)) {
-                    
+
                     $prefixLoop = '';
                     $partOfValue = '';
-                    
+
                     $tmp = explode($customPrefix, $value);
                     if (count($tmp) > 0) {
                         foreach ($tmp as $item) {
@@ -101,7 +88,7 @@ trait SubAdminTrait
                             }
                         }
                     }
-                    
+
                     if (!empty($partOfValue)) {
                         if (is_numeric($partOfValue)) {
                             $tmpValue = zeroLead($partOfValue + 1, $zeroLead);
@@ -112,19 +99,17 @@ trait SubAdminTrait
                     } else {
                         $tmpValue = zeroLead($startAt + 1, $zeroLead);
                     }
-                    
+
                     $value = $prefixLoop . $tmpValue;
-                    
                 } // Value NOT contains the Custom Prefix
                 else {
                     $value = $customPrefix . zeroLead($startAt + 1, $zeroLead);
                 }
             }
-            
         } else {
             $value = $customPrefix . zeroLead($startAt + 1, $zeroLead);
         }
-        
+
         return $value;
     }
 }

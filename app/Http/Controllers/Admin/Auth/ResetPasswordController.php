@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Http\Controllers\Admin\Auth;
 
@@ -37,7 +25,7 @@ class ResetPasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
-    
+
     use ResetsPasswords;
 
     // where to redirect after password was reset
@@ -77,7 +65,7 @@ class ResetPasswordController extends Controller
             ['token' => $token, 'email' => $request->email]
         );
     }
-    
+
     /**
      * Reset the given user's password.
      *
@@ -91,11 +79,12 @@ class ResetPasswordController extends Controller
         // will update the password on an actual user model and persist it to the
         // database. Otherwise we will parse the error and return the response.
         $response = $this->broker()->reset(
-            $this->credentials($request), function ($user, $password) {
-            $this->resetPassword($user, $password);
-        }
+            $this->credentials($request),
+            function ($user, $password) {
+                $this->resetPassword($user, $password);
+            }
         );
-        
+
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
@@ -103,7 +92,7 @@ class ResetPasswordController extends Controller
             ? $this->sendResetResponse($request, $response)
             : $this->sendResetFailedResponse($request, $response);
     }
-    
+
     /**
      * Reset the given user's password.
      *
@@ -119,7 +108,7 @@ class ResetPasswordController extends Controller
             'verified_email' => 1, // Email auto-verified
             'verified_phone' => 1, // Phone auto-verified
         ])->save();
-        
+
         $this->guard()->login($user);
     }
 }

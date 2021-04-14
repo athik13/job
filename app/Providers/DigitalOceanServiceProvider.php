@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Providers;
 
@@ -35,32 +23,32 @@ class DigitalOceanServiceProvider extends ServiceProvider
     {
         //
     }
-	
-	/**
-	 * Perform post-registration booting of services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		Storage::extend('digitalocean', function ($app, $config) {
-			$region = $config['region'];
-			
-			$client = new S3Client([
-				'credentials' => [
-					'key'    => $config['key'],
-					'secret' => $config['secret']
-				],
-				'region'   => $region,
-				'version'  => 'latest',
-				'endpoint' => "https://$region.digitaloceanspaces.com",
-			]);
-			
-			$adapter = new AwsS3Adapter($client, $config['bucket']);
-			
-			// return new Filesystem($adapter);
-			$store = new Memory();
-			return new Filesystem(new CachedAdapter($adapter, $store));
-		});
-	}
+
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Storage::extend('digitalocean', function ($app, $config) {
+            $region = $config['region'];
+
+            $client = new S3Client([
+                'credentials' => [
+                    'key'    => $config['key'],
+                    'secret' => $config['secret']
+                ],
+                'region'   => $region,
+                'version'  => 'latest',
+                'endpoint' => "https://$region.digitaloceanspaces.com",
+            ]);
+
+            $adapter = new AwsS3Adapter($client, $config['bucket']);
+
+            // return new Filesystem($adapter);
+            $store = new Memory();
+            return new Filesystem(new CachedAdapter($adapter, $store));
+        });
+    }
 }

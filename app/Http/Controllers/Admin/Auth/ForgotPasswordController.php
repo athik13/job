@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Http\Controllers\Admin\Auth;
 
@@ -34,19 +22,19 @@ class ForgotPasswordController extends Controller
     | your application to your users. Feel free to explore this trait.
     |
     */
-    
+
     use SendsPasswordResetEmails {
         sendResetLinkEmail as public traitSendResetLinkEmail;
     }
 
-	/**
-	 * PasswordController constructor.
-	 */
+    /**
+     * PasswordController constructor.
+     */
     public function __construct()
     {
         $this->middleware('guest');
 
-		$this->redirectTo = admin_uri('dashboard');
+        $this->redirectTo = admin_uri('dashboard');
 
         parent::__construct();
     }
@@ -66,7 +54,7 @@ class ForgotPasswordController extends Controller
 
         return view('admin::auth.passwords.email', $this->data);
     }
-    
+
     /**
      * Send a reset link to the given user.
      *

@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Listeners;
 
@@ -28,7 +16,7 @@ class UpdateThePostCounter
     {
         //
     }
-    
+
     /**
      * Handle the event.
      *
@@ -44,24 +32,24 @@ class UpdateThePostCounter
             }
         }
 
-		if (!session()->has('postIsVisited')) {
-			return $this->updateCounter($event->post);
-		} else {
-			if (session()->get('postIsVisited') != $event->post->id) {
-				return $this->updateCounter($event->post);
-			} else {
-				return false;
-			}
-		}
+        if (!session()->has('postIsVisited')) {
+            return $this->updateCounter($event->post);
+        } else {
+            if (session()->get('postIsVisited') != $event->post->id) {
+                return $this->updateCounter($event->post);
+            } else {
+                return false;
+            }
+        }
     }
 
-	/**
-	 * @param $post
-	 */
-	public function updateCounter($post)
-	{
-		$post->visits = $post->visits + 1;
-		$post->save(['canBeSaved' => true]);
-		session()->put('postIsVisited', $post->id);
-	}
+    /**
+     * @param $post
+     */
+    public function updateCounter($post)
+    {
+        $post->visits = $post->visits + 1;
+        $post->save(['canBeSaved' => true]);
+        session()->put('postIsVisited', $post->id);
+    }
 }

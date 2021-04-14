@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Observers;
 
@@ -25,15 +13,15 @@ use Illuminate\Support\Facades\Cache;
 
 class PaymentMethodObserver
 {
-	/**
-	 * Listen to the Entry deleting event.
-	 *
-	 * @param PaymentMethod $paymentMethod
-	 * @return void
-	 */
-	public function deleting(PaymentMethod $paymentMethod)
-	{
-		/*
+    /**
+     * Listen to the Entry deleting event.
+     *
+     * @param PaymentMethod $paymentMethod
+     * @return void
+     */
+    public function deleting(PaymentMethod $paymentMethod)
+    {
+        /*
 		// Delete the payments of this PaymentMethod
 		$payments = Payment::withoutGlobalScope(StrictActiveScope::class)->where('payment_method_id', $paymentMethod->id);
 		if ($payments->count() > 0) {
@@ -43,49 +31,49 @@ class PaymentMethodObserver
 			}
 		}
 		*/
-	}
-	
-	/**
-	 * Listen to the Entry saved event.
-	 *
-	 * @param PaymentMethod $paymentMethod
-	 * @return void
-	 */
-	public function saved(PaymentMethod $paymentMethod)
-	{
-		// Removing Entries from the Cache
-		$this->clearCache($paymentMethod);
-	}
-	
-	/**
-	 * Listen to the Entry deleted event.
-	 *
-	 * @param PaymentMethod $paymentMethod
-	 * @return void
-	 */
-	public function deleted(PaymentMethod $paymentMethod)
-	{
-		// Removing Entries from the Cache
-		$this->clearCache($paymentMethod);
-	}
-	
-	/**
-	 * Removing the Entity's Entries from the Cache
-	 *
-	 * @param $paymentMethod
-	 */
-	private function clearCache($paymentMethod)
-	{
-		try {
-			$countries = Country::withoutGlobalScopes([ActiveScope::class, LocalizedScope::class])->get(['code']);
-		} catch (\Exception $e) {
-			$countries = collect([]);
-		}
-		
-		if ($countries->count() > 0) {
-			foreach ($countries as $country) {
-				Cache::forget($country->code . '.paymentMethods.all');
-			}
-		}
-	}
+    }
+
+    /**
+     * Listen to the Entry saved event.
+     *
+     * @param PaymentMethod $paymentMethod
+     * @return void
+     */
+    public function saved(PaymentMethod $paymentMethod)
+    {
+        // Removing Entries from the Cache
+        $this->clearCache($paymentMethod);
+    }
+
+    /**
+     * Listen to the Entry deleted event.
+     *
+     * @param PaymentMethod $paymentMethod
+     * @return void
+     */
+    public function deleted(PaymentMethod $paymentMethod)
+    {
+        // Removing Entries from the Cache
+        $this->clearCache($paymentMethod);
+    }
+
+    /**
+     * Removing the Entity's Entries from the Cache
+     *
+     * @param $paymentMethod
+     */
+    private function clearCache($paymentMethod)
+    {
+        try {
+            $countries = Country::withoutGlobalScopes([ActiveScope::class, LocalizedScope::class])->get(['code']);
+        } catch (\Exception $e) {
+            $countries = collect([]);
+        }
+
+        if ($countries->count() > 0) {
+            foreach ($countries as $country) {
+                Cache::forget($country->code . '.paymentMethods.all');
+            }
+        }
+    }
 }

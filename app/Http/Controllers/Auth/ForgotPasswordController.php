@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Http\Controllers\Auth;
 
@@ -47,8 +35,8 @@ class ForgotPasswordController extends FrontController
     /**
      * Display the form to request a password reset link.
      *
-	 * @return mixed
-	 */
+     * @return mixed
+     */
     public function showLinkRequestForm()
     {
         // Meta Tags
@@ -70,9 +58,9 @@ class ForgotPasswordController extends FrontController
         // Get the right login field
         $field = getLoginField($request->input('login'));
         $request->merge([$field => $request->input('login')]);
-		if ($field != 'email') {
-			$request->merge(['email' => $request->input('login')]);
-		}
+        if ($field != 'email') {
+            $request->merge(['email' => $request->input('login')]);
+        }
 
         // Send the Token by SMS
         if ($field == 'phone') {

@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Http\Requests\Admin;
 
@@ -28,7 +16,7 @@ class PostRequest extends Request
      */
     public function rules()
     {
-		$rules = [
+        $rules = [
             'category_id'         => ['required', 'not_in:0'],
             'post_type_id'        => ['required', 'not_in:0'],
             'company_name'        => ['required', new BetweenRule(2, 200), new BlacklistTitleRule()],
@@ -38,8 +26,8 @@ class PostRequest extends Request
             'contact_name'        => ['required', new BetweenRule(3, 200)],
             'email'               => ['required', 'email', 'max:100'],
         ];
-	
-		/*
+
+        /*
 		 * Tags (Only allow letters, numbers, spaces and ',;_-' symbols)
 		 *
 		 * Explanation:
@@ -50,10 +38,10 @@ class PostRequest extends Request
 		 * + 	=> Quantifier — Matches between one to unlimited times (greedy)
 		 * /u 	=> Unicode modifier. Pattern strings are treated as UTF-16. Also causes escape sequences to match unicode characters
 		 */
-		if ($this->filled('tags')) {
-			$rules['tags'] = ['regex:/^[\p{L}\p{N} ,;_-]+$/u'];
-		}
-		
-		return $rules;
+        if ($this->filled('tags')) {
+            $rules['tags'] = ['regex:/^[\p{L}\p{N} ,;_-]+$/u'];
+        }
+
+        return $rules;
     }
 }

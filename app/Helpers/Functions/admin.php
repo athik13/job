@@ -1,17 +1,5 @@
 <?php
-/**
- * LaraClassified - Geo Classified Ads Software
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 use App\Helpers\UrlGen;
 
@@ -21,16 +9,16 @@ use App\Helpers\UrlGen;
  */
 function admin_uri($path = '')
 {
-	$path = str_replace(url(config('larapen.admin.route_prefix', 'admin')), '', $path);
-	$path = ltrim($path, '/');
-	
-	if (!empty($path)) {
-		$path = config('larapen.admin.route_prefix', 'admin') . '/' . $path;
-	} else {
-		$path = config('larapen.admin.route_prefix', 'admin');
-	}
-	
-	return $path;
+    $path = str_replace(url(config('larapen.admin.route_prefix', 'admin')), '', $path);
+    $path = ltrim($path, '/');
+
+    if (!empty($path)) {
+        $path = config('larapen.admin.route_prefix', 'admin') . '/' . $path;
+    } else {
+        $path = config('larapen.admin.route_prefix', 'admin');
+    }
+
+    return $path;
 }
 
 /**
@@ -39,7 +27,7 @@ function admin_uri($path = '')
  */
 function admin_url($path = '')
 {
-	return url(admin_uri($path));
+    return url(admin_uri($path));
 }
 
 /**
@@ -68,8 +56,8 @@ function __t($string, $params = [], $file = 'admin::messages', $locale = null)
  */
 function checkboxDisplay($fieldValue)
 {
-	// fa-square-o | fa-check-square-o
-	// fa-toggle-off | fa-toggle-on
+    // fa-square-o | fa-check-square-o
+    // fa-toggle-off | fa-toggle-on
     if ($fieldValue == 1) {
         return '<i class="admin-single-icon fa fa-toggle-on" aria-hidden="true"></i>';
     } else {
@@ -88,10 +76,10 @@ function checkboxDisplay($fieldValue)
  */
 function ajaxCheckboxDisplay($id, $table, $field, $fieldValue = null)
 {
-    $lineId = $field.$id;
+    $lineId = $field . $id;
     $lineId = str_replace('.', '', $lineId); // fix JS bug (in admin layout)
     $data = 'data-table="' . $table . '" 
-			data-field="'.$field.'" 
+			data-field="' . $field . '" 
 			data-line-id="' . $lineId . '" 
 			data-id="' . $id . '" 
 			data-value="' . (isset($fieldValue) ? $fieldValue : 0) . '"';
@@ -118,10 +106,10 @@ function ajaxCheckboxDisplay($id, $table, $field, $fieldValue = null)
  */
 function installAjaxCheckboxDisplay($id, $table, $field, $fieldValue = null)
 {
-    $lineId = $field.$id;
+    $lineId = $field . $id;
     $lineId = str_replace('.', '', $lineId); // fix JS bug (in admin layout)
     $data = 'data-table="' . $table . '" 
-			data-field="'.$field.'" 
+			data-field="' . $field . '" 
 			data-line-id="' . $lineId . '" 
 			data-id="' . $id . '" 
 			data-value="' . $fieldValue . '"';
@@ -138,12 +126,12 @@ function installAjaxCheckboxDisplay($id, $table, $field, $fieldValue = null)
     $html .= ' &nbsp;';
     if ($fieldValue == 1) {
         $html .= '<a href="" id="install' . $id . '" class="ajax-request btn btn-xs btn-success" ' . $data . '>';
-		$html .= '<i class="fa fa-download"></i> ' . trans('admin.Installed');
-		$html .= '</a>';
+        $html .= '<i class="fa fa-download"></i> ' . trans('admin.Installed');
+        $html .= '</a>';
     } else {
         $html .= '<a href="" id="install' . $id . '" class="ajax-request btn btn-xs btn-default" ' . $data . '>';
-		$html .= '<i class="fa fa-download"></i> ' . trans('admin.Install');
-		$html .= '</a>';
+        $html .= '<i class="fa fa-download"></i> ' . trans('admin.Install');
+        $html .= '</a>';
     }
 
     return $html;
@@ -158,11 +146,11 @@ function installAjaxCheckboxDisplay($id, $table, $field, $fieldValue = null)
 function getPostUrl($post)
 {
     $out = '';
-	
-	if (isset($post->latestPayment) && !empty($post->latestPayment)) {
-		if (isset($post->latestPayment->package) && !empty($post->latestPayment->package)) {
-			$info = '';
-			if ($post->featured == 1) {
+
+    if (isset($post->latestPayment) && !empty($post->latestPayment)) {
+        if (isset($post->latestPayment->package) && !empty($post->latestPayment->package)) {
+            $info = '';
+            if ($post->featured == 1) {
                 $class = 'text-success';
             } else {
                 $class = 'text-danger';
@@ -174,15 +162,15 @@ function getPostUrl($post)
                 </i>';
         }
     }
-	
+
     // Get URL
-	if (!is_null($post) && isset($post->country_code, $post->title)) {
-    	$url = dmUrl($post->country_code, UrlGen::postPath($post));
-    	$out = linkStrLimit($url, $post->title, 35, 'target="_blank"') . $out;
-	} else {
-		$out = '--';
-	}
-	
+    if (!is_null($post) && isset($post->country_code, $post->title)) {
+        $url = dmUrl($post->country_code, UrlGen::postPath($post));
+        $out = linkStrLimit($url, $post->title, 35, 'target="_blank"') . $out;
+    } else {
+        $out = '--';
+    }
+
     return $out;
 }
 
@@ -193,25 +181,25 @@ function getPostUrl($post)
  */
 function getCountryFlag($entry, $withLink = false)
 {
-	$out = '';
-	
-	if (isset($entry->country_code)) {
-		$countryName = (isset($entry->country) && isset($entry->country->name)) ? $entry->country->name : null;
-		$countryName = (!empty($countryName)) ? $countryName : $entry->country_code;
-		
-		$iconPath = 'images/flags/16/' . strtolower($entry->country_code) . '.png';
-		if (file_exists(public_path($iconPath))) {
-			$out = '';
-			$out .= ($withLink) ? '<a href="' . dmUrl($entry->country_code, '/', true, true) . '" target="_blank">' : '';
-			$out .= '<img src="' . url($iconPath) . getPictureVersion() . '" data-toggle="tooltip" title="' . $countryName . '">';
-			$out .= ($withLink) ? '</a>' : '';
-			$out .= ' ';
-		} else {
-			$out .= $entry->country_code . ' ';
-		}
-	}
-	
-	return $out;
+    $out = '';
+
+    if (isset($entry->country_code)) {
+        $countryName = (isset($entry->country) && isset($entry->country->name)) ? $entry->country->name : null;
+        $countryName = (!empty($countryName)) ? $countryName : $entry->country_code;
+
+        $iconPath = 'images/flags/16/' . strtolower($entry->country_code) . '.png';
+        if (file_exists(public_path($iconPath))) {
+            $out = '';
+            $out .= ($withLink) ? '<a href="' . dmUrl($entry->country_code, '/', true, true) . '" target="_blank">' : '';
+            $out .= '<img src="' . url($iconPath) . getPictureVersion() . '" data-toggle="tooltip" title="' . $countryName . '">';
+            $out .= ($withLink) ? '</a>' : '';
+            $out .= ' ';
+        } else {
+            $out .= $entry->country_code . ' ';
+        }
+    }
+
+    return $out;
 }
 
 /**
@@ -225,13 +213,13 @@ function isVerifiedPost($post)
     if (!isset($post->verified_email) || !isset($post->verified_phone) || !isset($post->reviewed)) {
         return false;
     }
-    
+
     if (config('settings.single.posts_review_activation')) {
         $verified = ($post->verified_email == 1 && $post->verified_phone == 1 && $post->reviewed == 1);
     } else {
         $verified = ($post->verified_email == 1 && $post->verified_phone == 1);
     }
-    
+
     return $verified;
 }
 
@@ -246,7 +234,7 @@ function isVerifiedUser($user)
     if (!isset($user->verified_email) || !isset($user->verified_phone)) {
         return false;
     }
-    
+
     return ($user->verified_email == 1 && $user->verified_phone == 1);
 }
 
@@ -255,19 +243,19 @@ function isVerifiedUser($user)
  */
 function userHasSuperAdminPermissions()
 {
-	if (auth()->check()) {
-		$permissions = \App\Models\Permission::getSuperAdminPermissions();
-		
-		// Remove the standard admin permission
-		$permissions = collect($permissions)->reject(function ($value, $key) {
-			return $value == 'dashboard-access';
-		})->toArray();
-		
-		// Check if user has the super admin permissions
-		if (auth()->user()->can($permissions)) {
-			return true;
-		}
-	}
-	
-	return false;
+    if (auth()->check()) {
+        $permissions = \App\Models\Permission::getSuperAdminPermissions();
+
+        // Remove the standard admin permission
+        $permissions = collect($permissions)->reject(function ($value, $key) {
+            return $value == 'dashboard-access';
+        })->toArray();
+
+        // Check if user has the super admin permissions
+        if (auth()->user()->can($permissions)) {
+            return true;
+        }
+    }
+
+    return false;
 }

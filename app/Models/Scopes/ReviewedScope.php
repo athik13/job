@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Geo Classified Ads Software
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 namespace App\Models\Scopes;
 
@@ -24,10 +12,10 @@ class ReviewedScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-	 * @param Builder $builder
-	 * @param Model $model
-	 * @return $this|Builder
-	 */
+     * @param Builder $builder
+     * @param Model $model
+     * @return $this|Builder
+     */
     public function apply(Builder $builder, Model $model)
     {
         if (request()->segment(1) == admin_uri()) {
@@ -37,7 +25,7 @@ class ReviewedScope implements Scope
         if (config('settings.single.posts_review_activation')) {
             return $builder->where('reviewed', 1);
         }
-    
+
         return $builder;
     }
 }

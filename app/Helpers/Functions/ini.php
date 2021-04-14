@@ -1,17 +1,5 @@
 <?php
-/**
- * JobClass - Job Board Web Application
- * Copyright (c) BedigitCom. All Rights Reserved
- *
- * Website: https://bedigit.com
- *
- * LICENSE
- * -------
- * This software is furnished under a license and may be used and copied
- * only in accordance with the terms of such license and with the inclusion
- * of the above copyright notice. If you Purchased from CodeCanyon,
- * Please read the full License from here - http://codecanyon.net/licenses/standard
- */
+
 
 /*
  * Increase the server resources through the PHP.ini for this page
@@ -39,44 +27,44 @@
  */
 
 if (isset($configForUpload) && $configForUpload == true) {
-	// This configuration allow to upload 17MB file
-	$newMaxExecutionTime = '120';
-	$newMemoryLimit = '512M';
-	$newPostMaxSize = '128M';
-	$newUploadMaxFileSize = '64M';
-	$newMaxInputTime = '240';
+    // This configuration allow to upload 17MB file
+    $newMaxExecutionTime = '120';
+    $newMemoryLimit = '512M';
+    $newPostMaxSize = '128M';
+    $newUploadMaxFileSize = '64M';
+    $newMaxInputTime = '240';
 } else {
-	$newMaxExecutionTime = '0';
-	$newMemoryLimit = '-1';
-	$newPostMaxSize = '128M';
-	$newUploadMaxFileSize = '64M';
-	$newMaxInputTime = '0';
+    $newMaxExecutionTime = '0';
+    $newMemoryLimit = '-1';
+    $newPostMaxSize = '128M';
+    $newUploadMaxFileSize = '64M';
+    $newMaxInputTime = '0';
 }
 
 $maxExecutionTime = (int)@ini_get('max_execution_time');
 if ($maxExecutionTime != '0') {
-	if ($maxExecutionTime < (int)$newMaxExecutionTime || $newMaxExecutionTime == '0') {
-		@ini_set('max_execution_time', $newMaxExecutionTime);
-	}
+    if ($maxExecutionTime < (int)$newMaxExecutionTime || $newMaxExecutionTime == '0') {
+        @ini_set('max_execution_time', $newMaxExecutionTime);
+    }
 }
 $memoryLimit = (int)@ini_get('memory_limit');
 if ($memoryLimit != '-1') {
-	if ($memoryLimit < (int)$newMemoryLimit || $newMemoryLimit == '-1') {
-		@ini_set('memory_limit', $newMemoryLimit);
-	}
+    if ($memoryLimit < (int)$newMemoryLimit || $newMemoryLimit == '-1') {
+        @ini_set('memory_limit', $newMemoryLimit);
+    }
 }
 
 $postMaxSize = (int)@ini_get('post_max_size');
 if ($postMaxSize < (int)$newPostMaxSize) {
-	@ini_set('post_max_size', $newPostMaxSize);
+    @ini_set('post_max_size', $newPostMaxSize);
 }
 $uploadMaxFileSize = (int)@ini_get('upload_max_filesize');
 if ($uploadMaxFileSize < (int)$newUploadMaxFileSize) {
-	@ini_set('upload_max_filesize', $newUploadMaxFileSize);
+    @ini_set('upload_max_filesize', $newUploadMaxFileSize);
 }
 $maxInputTime = (int)@ini_get('max_input_time');
 if ($maxInputTime != '0') {
-	if ($maxInputTime < (int)$newMaxInputTime || $newMaxInputTime == '0') {
-		@ini_set('max_input_time', $newMaxInputTime);
-	}
+    if ($maxInputTime < (int)$newMaxInputTime || $newMaxInputTime == '0') {
+        @ini_set('max_input_time', $newMaxInputTime);
+    }
 }
