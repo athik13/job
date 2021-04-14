@@ -21,7 +21,7 @@ class HttpsProtocol
             if (!$request->secure()) {
                 /* $request->server('HTTP_X_FORWARDED_PROTO') != 'https' */
                 // Production is not currently secure
-                // return redirect()->secure($request->getRequestUri());
+                return redirect()->secure($request->getRequestUri());
             }
         }
 
