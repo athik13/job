@@ -215,7 +215,7 @@ UPDATE `<<prefix>>settings`
 	WHERE `key`='mail_driver';
 	
 UPDATE `<<prefix>>settings` 
-	SET `description`='Before enabling this option you need to download the Maxmind database by following the documentation: https://bedigit.com/doc/geo-location/'
+	SET `description`='Before enabling this option you need to download the Maxmind database by following the documentation: https://job.blank.mv/doc/geo-location/'
 	WHERE `key`='activation_geolocation';
 
 UPDATE `<<prefix>>settings` SET `key` = 'show_post_on_googlemap' WHERE `key` = 'show_ad_on_googlemap';

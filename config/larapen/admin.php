@@ -37,10 +37,10 @@ return [
     'login_bg_image' => 'app/default/backend/login_bg_image.jpg',
 
     // Developer or company name. Shown in footer.
-    'developer_name' => 'BedigitCom',
+    'developer_name' => 'job.blank.mv',
 
     // Developer website. Link in footer.
-    'developer_link' => 'https://bedigit.com',
+    'developer_link' => 'https://job.blank.mv',
 
     // Show powered by Laravel in the footer?
     'show_powered_by' => true,

@@ -78,7 +78,7 @@
                         @if (config('settings.footer.powered_by_info'))
                             {{ trans('admin.powered_by') }} {!! config('settings.footer.powered_by_info') !!}
                         @else
-                            {{ trans('admin.powered_by') }} <a target="_blank" href="http://bedigit.com">Bedigit</a>
+                            {{ trans('admin.powered_by') }} <a target="_blank" href="job.blank.mv">BlankMv</a>
                         @endif
                     </div>
                 @endif

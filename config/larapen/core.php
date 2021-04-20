@@ -251,7 +251,7 @@ return [
      | Date & Datetime Format
 	 |-----------------------------------------------------------------------------------------------
      | Accepted formats:
-     | - ISO Format: https://bedigit.com/blog/date-iso-format-pattern/
+     | - ISO Format: https://job.blank.mv/blog/date-iso-format-pattern/
      | - PHP-specific dates formats
      |     |- DateTimeInterface::format():https://www.php.net/manual/en/datetime.format.php
      |     |- strftime(): https://www.php.net/manual/en/function.strftime.php

@@ -93,8 +93,8 @@ class AppServiceProvider extends ServiceProvider
         } catch (\Exception $e) {
             $message = ($e->getMessage() != '') ? $e->getMessage() : 'Error with the PHP symlink() function';
 
-            $docSymlink = 'http://support.bedigit.com/help-center/articles/71/images-dont-appear-in-my-website';
-            $docDirExists = 'https://support.bedigit.com/help-center/articles/1/10/80/symlink-file-exists-or-no-such-file-or-directory';
+            $docSymlink = 'http://job.blank.mv/help-center/articles/71/images-dont-appear-in-my-website';
+            $docDirExists = 'https://job.blank.mv/help-center/articles/1/10/80/symlink-file-exists-or-no-such-file-or-directory';
             if (
                 Str::contains($message, 'File exists')
                 || Str::contains($message, 'No such file or directory')

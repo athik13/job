@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'install.database_import.success' => 'The database was successfully imported.',
@@ -75,7 +75,7 @@ return [
     'button_processing' => 'Processing',
     'setup' => 'Setup',
     'finish' => 'Finish',
-	'cron_jobs_guide' => 'Insert the command line below to your system crontab.<br>NOTE: Below timings for running the cron jobs are the recommended, you can change it if you want. Click <a href="http://support.bedigit.com/help-center/articles/19/configuring-the-cron-job" target="_blank">here</a> for more information.',
+    'cron_jobs_guide' => 'Insert the command line below to your system crontab.<br>NOTE: Below timings for running the cron jobs are the recommended, you can change it if you want. Click <a href="http://job.blank.mv/help-center/articles/19/configuring-the-cron-job" target="_blank">here</a> for more information.',
     'socket' => 'Unix socket (Optional) - Leave blank if your <a href="http://php.net/manual/en/ref.pdo-mysql.connection.php" target="_blank">server</a> doesn\'t have this option',
     'sparkpost' => 'Sparkpost',
     'sparkpost_secret' => 'Sparkpost secret',

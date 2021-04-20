@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
     'Home' => 'Home',
@@ -548,7 +548,7 @@ return [
 <br><code>lll</code> => Jan 9, 2020 8:45:21 PM (23:15)
 <br><code>llll</code> => Wed, Jan 9, 2020 8:45:21 PM (23:15)
 <br>...
-<br>More information on <a href=\'https://bedigit.com/blog/date-iso-format-pattern/\' target=\'_blank\'>ISO Format</a> patterns">ISO format</a> patterns.',
+<br>More information on <a href=\'https://job.blank.mv/blog/date-iso-format-pattern/\' target=\'_blank\'>ISO Format</a> patterns">ISO format</a> patterns.',
     'php_date_format_hint' => 'Accepted formats: PHP-specific dates formats (<a href="javascript: void(0);" data-toggle="popover" title="DateTimeInterface::format()" data-content="<code>Y-m-d H:i</code> => 2020-01-09 08:45 (23:15)
 <br><code>j M Y g:i a</code> => 9 Jan 2020 8:45 am (11:15 pm)
 <br><code>j F Y G:i</code> => 9 January 2020 8:45 (23:15)
@@ -582,7 +582,7 @@ return [
 </div>
 </div>',
     'php_specific_date_format_label' => 'Use PHP-specific date formats',
-    'php_specific_date_format_hint' => 'By default, <a href="https://bedigit.com/blog/date-iso-format-pattern/" target="_blank">ISO format</a> patterns are used by the system to display dates. This option will be applied to all the system (front and back office).',
+    'php_specific_date_format_hint' => 'By default, <a href="https://job.blank.mv/blog/date-iso-format-pattern/" target="_blank">ISO format</a> patterns are used by the system to display dates. This option will be applied to all the system (front and back office).',
     'php_specific_date_format_info' => '<div class="card bg-light-inverse rounded mb-0">
 <div class="card-body">
 <h4 class="mt-0">Dates Translation Notes</h4>
@@ -761,7 +761,7 @@ return [
     'max_file_size_label' => 'Max File Size',
     'max_file_size_hint' => 'Max File Size (in KB)',
     'Enable Geolocation' => 'Enable Geolocation',
-    'enable_geolocation_hint' => 'Before enabling this option you need to download the Maxmind database by following the documentation <a href="http://support.bedigit.com/help-center/articles/14/enable-the-geo-location" target="_blank">here</a>.',
+    'enable_geolocation_hint' => 'Before enabling this option you need to download the Maxmind database by following the documentation <a href="http://job.blank.mv/help-center/articles/14/enable-the-geo-location" target="_blank">here</a>.',
     'Default Country' => 'Default Country',
     'eg_default_country' => 'Default country (ISO alpha-2 codes - e.g. US)',
     'Show country flag on top' => 'Show country flag on top',
@@ -794,7 +794,7 @@ return [
     'Enable HTML Minify' => 'Enable HTML Minify',
     'Enable HTTP Cache' => 'Enable HTTP Cache',
     'cron_sep_value' => '<h3>Cron Job</h3>',
-    'cron_info_sep_value' => 'You have to add <code>* * * * * /usr/bin/php /path/to/your/website/artisan schedule:run >> /dev/null 2>&amp;1</code> in your Cron Job tab. Click <a href="http://support.bedigit.com/help-center/articles/19/configuring-the-cron-job" target="_blank">here</a> for more information.',
+    'cron_info_sep_value' => 'You have to add <code>* * * * * /usr/bin/php /path/to/your/website/artisan schedule:run >> /dev/null 2>&amp;1</code> in your Cron Job tab. Click <a href="http://job.blank.mv/help-center/articles/19/configuring-the-cron-job" target="_blank">here</a> for more information.',
     'cron_ads_clear_sep_value' => '<h3>Ads Clear Command</h3>',
     'cron_ads_clear_info_value' => 'You can execute this command manually by running the command line below in your terminal/console: <br><div class="alert alert-light-info"><code>/usr/bin/php /path/to/your/website/artisan ads:clear</code></div>',
     'cron_ads_clear_info_value_real' => 'You can execute this command manually by running the command line below in your terminal/console: <br><div class="alert alert-light-info"><code>:phpBinaryPath :basePath/artisan ads:clear</code></div>',
@@ -1304,7 +1304,7 @@ NOTE: Before configuring your Twitter app in the script, you have to change its 
     'storage_disk_option_0' => 'Local Only',
     'storage_disk_option_1' => 'Cloud Only',
     'storage_disk_option_2' => 'Local and Cloud',
-    'storage_disk_hint' => 'Cloud disk can be: <a href="https://support.bedigit.com/help-center/articles/1/8/85/configuring-the-backup-storage#ftp" target="_blank">ftp</a>, <a href="https://support.bedigit.com/help-center/articles/1/8/85/configuring-the-backup-storage#sftp" target="_blank">sftp</a>, <a href="https://support.bedigit.com/help-center/articles/1/8/85/configuring-the-backup-storage#amazon-s3" target="_blank">s3</a>, <a href="https://support.bedigit.com/help-center/articles/1/8/85/configuring-the-backup-storage#dropbox" target="_blank">dropbox</a>, <a href="https://support.bedigit.com/help-center/articles/1/8/85/configuring-the-backup-storage#backblaze" target="_blank">backblaze</a>, <a href="https://support.bedigit.com/help-center/articles/1/8/85/configuring-the-backup-storage#digitalocean" target="_blank">digitalocean</a>',
+    'storage_disk_hint' => 'Cloud disk can be: <a href="https://job.blank.mv/help-center/articles/1/8/85/configuring-the-backup-storage#ftp" target="_blank">ftp</a>, <a href="https://job.blank.mv/help-center/articles/1/8/85/configuring-the-backup-storage#sftp" target="_blank">sftp</a>, <a href="https://job.blank.mv/help-center/articles/1/8/85/configuring-the-backup-storage#amazon-s3" target="_blank">s3</a>, <a href="https://job.blank.mv/help-center/articles/1/8/85/configuring-the-backup-storage#dropbox" target="_blank">dropbox</a>, <a href="https://job.blank.mv/help-center/articles/1/8/85/configuring-the-backup-storage#backblaze" target="_blank">backblaze</a>, <a href="https://job.blank.mv/help-center/articles/1/8/85/configuring-the-backup-storage#digitalocean" target="_blank">digitalocean</a>',
     'backup_schedule_value' => '<h3>Backup Schedule</h3>',
     'backup_all_label' => 'Backup all the website',
     'backup_all_hint' => 'Backup all the website',
