@@ -125,7 +125,7 @@
 										</a>
 									</li>
 								@endif
-								@if (auth()->user()->can('role-list') || userHasSuperAdminPermissions())
+								{{-- @if (auth()->user()->can('role-list') || userHasSuperAdminPermissions())
 									<li class="sidebar-item">
 										<a href="{{ admin_url('roles') }}" class="sidebar-link">
 											<i class="mdi mdi-adjust"></i>
@@ -140,7 +140,7 @@
 											<span class="hide-menu">{{ trans('admin.permissions') }}</span>
 										</a>
 									</li>
-								@endif
+								@endif --}}
 								@if (auth()->user()->can('gender-list') || userHasSuperAdminPermissions())
 									<li class="sidebar-item">
 										<a href="{{ admin_url('genders') }}" class="sidebar-link">
@@ -216,7 +216,7 @@
 						@endif
 					@endif
 					
-					@if (auth()->user()->can('plugin-list') || userHasSuperAdminPermissions())
+					{{-- @if (auth()->user()->can('plugin-list') || userHasSuperAdminPermissions())
 						<li class="sidebar-item">
 							<a href="{{ admin_url('plugins') }}" class="sidebar-link">
 								<i data-feather="package" class="feather-icon"></i> <span class="hide-menu">{{ trans('admin.plugins') }}</span>
@@ -287,7 +287,7 @@
 								@endif
 							</ul>
 						</li>
-					@endif
+					@endif --}}
 					
 				</ul>
 			</nav>
