@@ -666,7 +666,7 @@ return [
     'general' => 'general',
     'homepage' => 'homepage',
     'app_html_brand_info' => '<h3>Brand Info</h3>',
-    'Purchase Code' => 'Purchase Code',
+    'Security Code' => 'Security Code',
     'App Name' => 'App Name',
     'App Slogan' => 'App Slogan',
     'App Logo' => 'App Logo',
@@ -1112,7 +1112,7 @@ return [
     'Enter a number with unit' => 'Enter a number with unit (eg. 5px)',
     'Included' => 'Included',
     'Activate' => 'Activate',
-    'find_my_purchase_code' => 'Get your Purchase Code <a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-" target="_blank">here</a>.',
+    'find_my_purchase_code' => '---',
     'purchase_code_placeholder' => 'Enter the plugin\'s purchase code',
     'plugin_purchase_code_invalid_message' => 'There was a problem checking the purchase code related to the ":plugin_name" plugin.',
     'language_info_line_create' => '<div class="callout callout-info" style="margin-bottom: 0;">
