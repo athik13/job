@@ -1,5 +1,5 @@
 @if (auth()->user()->can('setting-list') || userHasSuperAdminPermissions())
-	@if (config('settings.app.general_settings_as_submenu_in_sidebar'))
+	{{-- @if (config('settings.app.general_settings_as_submenu_in_sidebar'))
 		<a href="#" class="has-arrow sidebar-link">
 			<span class="hide-menu">{{ trans('admin.general_settings') }}</span>
 		</a>
@@ -20,5 +20,10 @@
 				<span class="hide-menu">{{ trans('admin.general_settings') }}</span>
 			</a>
 		</li>
-	@endif
+	@endif --}}
+    <li class="sidebar-item">
+        <a href="{{ admin_url('settings') }}" class="sidebar-link">
+            <span class="hide-menu">{{ trans('admin.general_settings') }}</span>
+        </a>
+    </li>
 @endif

@@ -1,11 +1,11 @@
-@if (auth()->user()->can('language-list') || userHasSuperAdminPermissions())
+{{-- @if (auth()->user()->can('language-list') || userHasSuperAdminPermissions())
 	<li class="sidebar-item">
 		<a href="{{ admin_url('languages') }}" class="sidebar-link">
 			<i class="mdi mdi-adjust"></i>
 			<span class="hide-menu">{{ trans('admin.languages') }}</span>
 		</a>
 	</li>
-@endif
+@endif --}}
 @if (auth()->user()->can('home-section-list') || userHasSuperAdminPermissions())
 	<li class="sidebar-item">
 		<a href="{{ admin_url('homepage') }}" class="sidebar-link">
@@ -46,7 +46,7 @@
 		</a>
 	</li>
 @endif
-@if (
+{{-- @if (
 	auth()->user()->can('country-list')
 	|| auth()->user()->can('currency-list')
 	|| userHasSuperAdminPermissions()
@@ -74,7 +74,7 @@
 			@endif
 		</ul>
 	</li>
-@endif
+@endif --}}
 @if (auth()->user()->can('blacklist-list') || userHasSuperAdminPermissions())
 	<li class="sidebar-item">
 		<a href="{{ admin_url('blacklists') }}" class="sidebar-link">
