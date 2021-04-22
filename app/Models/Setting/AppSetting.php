@@ -204,9 +204,8 @@ class AppSetting
             [
                 'name'  => 'purchase_code',
                 'label' => trans('admin.Purchase Code'),
-                'type'  => 'text',
                 'hint'  => trans('admin.find_my_purchase_code'),
-                'hidden' => 'true'
+                'type'    => 'hidden'
             ],
             [
                 'name'              => 'app_name',
