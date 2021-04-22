@@ -666,7 +666,7 @@ return [
     'general' => 'general',
     'homepage' => 'homepage',
     'app_html_brand_info' => '<h3>Brand Info</h3>',
-    'Security Code' => 'Security Code',
+    'Purchase Code' => 'Security Code',
     'App Name' => 'App Name',
     'App Slogan' => 'App Slogan',
     'App Logo' => 'App Logo',
